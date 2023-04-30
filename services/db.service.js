@@ -14,6 +14,7 @@ console.log('config', config)
 
 async function getCollection(collectionName) {
   try {
+    console.log('IN GET COLLECTION', config, collectionName)
     const db = await connect()
     console.log('db', db)
 

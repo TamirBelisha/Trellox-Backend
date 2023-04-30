@@ -5,6 +5,7 @@ const logger = require('../../services/logger.service')
 async function query(filterBy) {
   const criteria = {}
   try {
+    console.log('AT QUERY')
     const collection = await dbService.getCollection('board')
     var boards = await collection.find(criteria).toArray()
     return boards
@@ -27,7 +28,7 @@ async function getById(boardId) {
 async function add(board) {
   try {
     const collection = await dbService.getCollection('board')
-    const {ops} = await collection.insertOne(board)
+    const { ops } = await collection.insertOne(board)
     return ops[0]
   } catch (err) {
     logger.error('cannot insert board', err)
