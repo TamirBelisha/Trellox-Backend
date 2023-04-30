@@ -23,6 +23,7 @@ async function getCollection(collectionName) {
     return collection
   } catch (err) {
     logger.error('Failed to get Mongo collection', err)
+    console.log('Failed to get Mongo collection', err)
     throw err
   }
 }
@@ -31,12 +32,16 @@ async function connect() {
   console.log('dbConn', dbConn)
   if (dbConn) return dbConn
   try {
+    console.log('BEFORE')
     const client = await MongoClient.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
+    console.log('AFTER', client)
     const db = client.db(dbName)
+    console.log('db', db)
     dbConn = db
     return db
   } catch (err) {
     logger.error('Cannot Connect to DB', err)
+    console.log('Cannot Connect to DB', err)
     throw err
   }
 }
