@@ -9,7 +9,6 @@ module.exports = {
 const dbName = 'board_db'
 
 var dbConn = null
-console.log('config', config)
 
 async function getCollection(collectionName) {
   try {
