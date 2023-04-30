@@ -10,10 +10,15 @@ const dbName = 'board_db'
 
 var dbConn = null
 
+console.log('config', config)
+
 async function getCollection(collectionName) {
   try {
     const db = await connect()
+    console.log('db', db)
+
     const collection = await db.collection(collectionName)
+    console.log('collection', collection)
     return collection
   } catch (err) {
     logger.error('Failed to get Mongo collection', err)
