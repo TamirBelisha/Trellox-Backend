@@ -32,7 +32,7 @@ async function connect() {
   console.log('dbConn', dbConn)
   if (dbConn) return dbConn
   try {
-    console.log('BEFORE')
+    console.log('BEFORE', MongoClient, MongoClient.connect)
     const client = await MongoClient.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('AFTER', client)
     const db = client.db(dbName)
